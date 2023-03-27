@@ -3,7 +3,8 @@ from enum import Enum, auto
 
 class PossibleEvents(Enum):
     CLEAR_BUTTON_PRESSED = auto()
-    FUNCTION_BUTTON_PRESSED = auto()
+    CALCULATOR_BUTTON_PRESSED = auto()
+    FUNCTION_BUTTON_CREATED = auto()
 
 
 class EventManager:
