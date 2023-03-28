@@ -1,51 +1,73 @@
 import customtkinter as ctk
 import tkinter as tk
 from EventManager import EventManager, PossibleEvents
+from Error.InvalidInputError import InvalidInputError
+from Error.ErrorMessages import ErrorMessages
 
 
 class EquationEntry(ctk.CTkEntry):
-    def __init__(self, parentContainer, width, height):
-        self.value = tk.StringVar()
+    def __init__(self, parentContainer, width, height, textVariable, font):
+        self.currentValue = textVariable
         super().__init__(master=parentContainer, width=width,
-                         height=height, textvariable=self.value)
+                         height=height, textvariable=self.currentValue, font=font)
 
         EventManager.Register(
-            PossibleEvents.CALCULATOR_BUTTON_PRESSED, self.printButtonSymbol)
+            PossibleEvents.CALCULATOR_BUTTON_ISPRESSED, self.printButtonSymbol)
 
     def printButtonSymbol(self, symbol):
-        oldValue = self.value.get()
-        self.value.set(f'{oldValue}{symbol}')
+        oldValue = self.currentValue.get()
+        self.currentValue.set(f'{oldValue}{symbol}')
 
 
 class ResultEntry(ctk.CTkEntry):
     functionDictionary = {}
 
-    def __init__(self, parentContainer, width, height):
-        self.value = tk.StringVar()
+    def __init__(self, parentContainer, width, height, textVariable, font):
+        self.currentValue = textVariable
+        self.result = tk.StringVar()
         super().__init__(master=parentContainer, width=width,
-                         height=height, textvariable=self.value)
+                         height=height, textvariable=self.result, font=font, state="disabled")
 
         EventManager.Register(
-            PossibleEvents.FUNCTION_BUTTON_CREATED, self.addFunctionDefinition)
+            PossibleEvents.FUNCTION_BUTTON_ISCREATED, self.addFunctionDefinition)
 
-    def addFunctionDefinition(self, param):
-        (symbol, computeFunction) = param
-        self.functionDictionary[symbol] = computeFunction
+        EventManager.Register(
+            PossibleEvents.COMPUTE_BUTTON_ISPRESSED, self.parseInput)
+
+    def addFunctionDefinition(self, symbol, computeFunction):
+        ResultEntry.functionDictionary[symbol] = computeFunction
+
+    def handleException(self, e):
+        self.result.set(e)
+
+    def parseInput(self):
+        err = None
+        try:
+            result = eval(self.currentValue.get(),
+                          ResultEntry.functionDictionary)
+            self.result.set(result)
+        except InvalidInputError as e:
+            self.handleException(e)
+        except Exception as e:
+            self.handleException('Something went wrong. Verify your input!')
 
 
 class OutputView(ctk.CTkFrame):
     width = 400
-    height = 50
+    height = 80
 
     def __init__(self, parentContainer):
         super().__init__(master=parentContainer,
-                         width=self.width, height=self.height, fg_color="red")
+                         width=self.width, height=self.height)
         self.pack_propagate(False)
 
+        self.font = ("Roboto", 20)
+        self.currentInput = tk.StringVar()
+
         self.equationEntry = EquationEntry(
-            parentContainer=self, width=OutputView.width, height=OutputView.height/2)
+            parentContainer=self, width=OutputView.width, height=OutputView.height/2, textVariable=self.currentInput, font=self.font)
         self.equationEntry.pack()
 
         self.resultEntry = ResultEntry(
-            parentContainer=self, width=OutputView.width, height=OutputView.height/2)
+            parentContainer=self, width=OutputView.width, height=OutputView.height/2, textVariable=self.currentInput, font=self.font)
         self.resultEntry.pack()

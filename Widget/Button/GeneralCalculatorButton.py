@@ -13,14 +13,14 @@ class CalculatorButton(ctk.CTkButton):
 
     def onClick(self):
         EventManager.Notify(
-            PossibleEvents.CALCULATOR_BUTTON_PRESSED, self.symbol)
+            PossibleEvents.CALCULATOR_BUTTON_ISPRESSED, symbol=self.symbol)
 
 
 class CalculatorFunctionButton(CalculatorButton):
     def __init__(self, parentContainer, symbol):
         super().__init__(parentContainer, symbol)
         EventManager.Notify(
-            PossibleEvents.FUNCTION_BUTTON_CREATED, (self.symbol, self.compute))
+            PossibleEvents.FUNCTION_BUTTON_ISCREATED, symbol=self.symbol, computeFunction=self.compute)
 
-    def compute(self, *arg):
+    def compute(self, *args):
         pass

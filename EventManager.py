@@ -2,9 +2,11 @@ from enum import Enum, auto
 
 
 class PossibleEvents(Enum):
-    CLEAR_BUTTON_PRESSED = auto()
-    CALCULATOR_BUTTON_PRESSED = auto()
-    FUNCTION_BUTTON_CREATED = auto()
+    CLEAR_BUTTON_ISPRESSED = auto()
+    CALCULATOR_BUTTON_ISPRESSED = auto()
+    FUNCTION_BUTTON_ISCREATED = auto()
+    EQUATION_ENTRY_ISUPDATED = auto()
+    COMPUTE_BUTTON_ISPRESSED = auto()
 
 
 class EventManager:
@@ -19,7 +21,7 @@ class EventManager:
         cls.events[event].append(functionToExecute)
 
     @classmethod
-    def Notify(cls, event, param=None):
+    def Notify(cls, event, **params):
         if event in cls.events.keys():
             for function in cls.events[event]:
-                function(param)
+                function(**params)
