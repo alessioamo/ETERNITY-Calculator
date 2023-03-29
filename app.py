@@ -6,16 +6,6 @@ from View.NumberButtonView import NumberButtonView
 import customtkinter as ctk
 # Custom Tkinter doc: https://github.com/TomSchimansky/CustomTkinter/wiki
 
-# Create the tickets for the button
-# Update the ReadME
-# Update Cursor position to be between brackets when function click symbol
-# Fix screen dimension
-# Change name and logo of calculator window
-# Add Error handling for letters input
-# Add left,right,delete and clear btn
-# Add the function btn
-# Update the image of the window calculator
-
 
 class App(ctk.CTk):
     def __init__(self):
