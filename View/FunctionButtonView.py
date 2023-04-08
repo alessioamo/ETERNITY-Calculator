@@ -1,4 +1,5 @@
 import customtkinter as ctk
+from Widget.Button.FunctionButton.Stdev import stdevButton      #yaser
 from Widget.Button.FunctionButton.Acos import AcosButton
 from Widget.Button.GeneralCalculatorButton import CalculatorButton
 from Widget.Button.MiscellaneousButton.ComputeButton import ComputeButton
@@ -33,3 +34,8 @@ class FunctionButtonView(ctk.CTkFrame):
         # Row 2
         acosBtn = AcosButton(parentContainer=self, symbol="acos")
         acosBtn.grid(column=1, row=2)
+        stdevBtn = stdevButton(parentContainer=self, symbol="stDev")    #yaser
+        stdevBtn.grid(column=2, row=2)                                  #yaser
+        btnComma = CalculatorButton(parentContainer=self, symbol=',')   #yaser
+        btnComma.grid(column=3, row=2)                                  #yaser
+
