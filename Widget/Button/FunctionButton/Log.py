@@ -1,7 +1,7 @@
 from Widget.Button.GeneralCalculatorButton import CalculatorFunctionButton
 from Error.InvalidInputError import InvalidInputError
 from Error.ErrorMessages import ErrorMessages
-# import math
+import math
 
 
 class LogButton(CalculatorFunctionButton):
@@ -10,15 +10,17 @@ class LogButton(CalculatorFunctionButton):
 
     def compute(self, *args):
         x = args[0]
-        print(args)
-        if (x <= 0):
+        base = 10
+        if len(args) == 2:
+            base = args[1]
+        if (x <= 0 or base <= 0):
             raise InvalidInputError(
                 ErrorMessages["Functions"]["Log"]["InvalidInputOfNotPositive"])
-        output = self.logarithm(x)
-        # print("ERROR: ", abs(math.log(x) - output))
-        return output
+        output = self.logarithm(x, base)
+        print("ERROR: ", abs(math.log(x, base) - output))
+        return round(output, 10)
         
-    def logarithm(self, x, base=10):    
+    def logarithm(self, x, base):    
         # Define epsilon for accuracy
         epsilon = 1e-10
 
