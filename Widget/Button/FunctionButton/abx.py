@@ -36,6 +36,11 @@ class abxButton(CalculatorFunctionButton):
                 ErrorMessages["Functions"]["abx_b"]["InvalidInputOf1"]
             )
 
+        if (b == 0) and (x == 0):
+            raise InvalidInputError(
+                ErrorMessages["Functions"]["abx_bx"]["InvalidPower0"]
+            )
+
         if not isinstance(x, (int, float)):
             raise InvalidInputError(
                 ErrorMessages["Functions"]["General"])

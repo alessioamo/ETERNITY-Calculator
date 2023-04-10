@@ -17,7 +17,11 @@ ErrorMessages = {
         },
         "abx_input": {
             "InvalidInput": "This function accepts 3 arguments"
+        },
+        "abx_bx": {
+            "InvalidPower0": "0 to the power of 0 is undefined"
         }
+
     }
 
 
