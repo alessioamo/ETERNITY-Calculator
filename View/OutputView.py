@@ -48,6 +48,9 @@ class ResultEntry(ctk.CTkEntry):
             self.result.set(result)
         except InvalidInputError as e:
             self.handleException(e)
+        except SyntaxError as e:
+            self.handleException(
+                'Invalid characters or unclosed parentheses were used!')
         except Exception as e:
             self.handleException('Something went wrong. Verify your input!')
 
