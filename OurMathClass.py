@@ -13,3 +13,5 @@ class OurMathClass:
     power = math.pow  # NOTE: will have to be changed with the power function of Zarren
     pi = math.pi
     radianToDegree = math.degrees
+    MyEulerConstant = math.e
+    degreeToRadian = math.radians
