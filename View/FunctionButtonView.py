@@ -33,3 +33,6 @@ class FunctionButtonView(ctk.CTkFrame):
         # Row 2
         acosBtn = AcosButton(parentContainer=self, symbol="acos")
         acosBtn.grid(column=1, row=2)
+
+        sinhBtn = SinhButton(parentContainer=self, symbol="sinh")
+        sinhBtn.grid(column=1, row=3)
