@@ -18,6 +18,6 @@ class MADButton(CalculatorFunctionButton):
             return -1 * arg
 
     def compute(self, *data):
-        mean1 = self.mean(list(data))
-        deviations = [self.myabs(x - mean1) for x in list(data)]
+        m = self.mean(list(data))
+        deviations = [self.myabs(x - m) for x in list(data)]
         return self.mean(deviations)
