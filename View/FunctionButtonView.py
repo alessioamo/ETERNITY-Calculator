@@ -37,7 +37,7 @@ class FunctionButtonView(ctk.CTkFrame):
         acosBtn = AcosButton(parentContainer=self, symbol="acos")
         acosBtn.grid(column=1, row=2)
         stdevBtn = stdevButton(parentContainer=self, symbol="stDev")    #yaser
-        stdevBtn.grid(column=2, row=2)                                  #yaser
+        stdevBtn.grid(column=2, row=4)                                  #yaser
         btnComma = CalculatorButton(parentContainer=self, symbol=',')   #yaser
         btnComma.grid(column=3, row=2)                                  #yaser
 
