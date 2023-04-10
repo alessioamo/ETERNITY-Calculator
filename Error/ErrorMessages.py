@@ -4,10 +4,9 @@ ErrorMessages = {
     },
     "Functions": {
         "Acos": {
-            "InvalidInputOf1": "Acos cannot take an input of 1"
-        },
-        "Log": {
-            "InvalidInputOfNotPositive": "x and base must be positive numbers"
+            "InputOutsideDomain": "Acos can only take input that is in [-1,1]",
+            "NoParameterGiven": "Acos must take 1 parameter",
+            "MoreThan1ParameterGiven": "Acos can only take 1 parameter",
         }
     }
 }
