@@ -4,6 +4,7 @@ from Widget.Button.FunctionButton.sinh import SinhButton
 from Widget.Button.FunctionButton.MAD import MADButton
 from Widget.Button.GeneralCalculatorButton import CalculatorButton
 from Widget.Button.MiscellaneousButton.ComputeButton import ComputeButton
+from Widget.Button.MiscellaneousButton.ClearButton import ClearButton
 
 
 class FunctionButtonView(ctk.CTkFrame):
@@ -24,8 +25,8 @@ class FunctionButtonView(ctk.CTkFrame):
             parentContainer=self, symbol='->')  # To implement
         btnDel = CalculatorButton(
             parentContainer=self, symbol='DEL')  # To implement
-        btnClear = ComputeButton(parentContainer=self,
-                                 symbol='CLR')  # To implement
+        btnClear = ClearButton(parentContainer=self,
+                               symbol='CLR')  # To implement
 
         leftArr.grid(column=1, row=1)
         rightArr.grid(column=2, row=1)
@@ -36,10 +37,8 @@ class FunctionButtonView(ctk.CTkFrame):
         acosBtn = AcosButton(parentContainer=self, symbol="acos")
         acosBtn.grid(column=1, row=2)
 
-
         sinhBtn = SinhButton(parentContainer=self, symbol="sinh")
         sinhBtn.grid(column=1, row=3)
 
         madBtn = MADButton(parentContainer=self, symbol="mad")
         madBtn.grid(column=5, row=2)
-
