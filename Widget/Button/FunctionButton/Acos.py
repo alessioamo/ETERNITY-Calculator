@@ -2,15 +2,14 @@ from Widget.Button.GeneralCalculatorButton import CalculatorFunctionButton
 from Error.InvalidInputError import InvalidInputError
 from Error.ErrorMessages import ErrorMessages
 from OurMathClass import OurMathClass
-import math
-
-# Implement the change degree button
-# Do the test cases
+from EventManager import EventManager, PossibleEvents
 
 
 class AcosButton(CalculatorFunctionButton):
     # Set of points that we already know the value with certainty
     # Will be used as center for taylor approximation
+    isInputInDegree = False
+
     taylorAppCenters = [
         (-0.8660254037844386, 5*OurMathClass.pi/6),
         (-0.7071067811865476, 3*OurMathClass.pi/4),
@@ -31,9 +30,13 @@ class AcosButton(CalculatorFunctionButton):
 
     def __init__(self, parentContainer, symbol):
         super().__init__(parentContainer, symbol)
+        EventManager.Register(PossibleEvents.RADIAN_BUTTON_ISPRESSED,
+                              lambda: AcosButton.setIsInputInDegree(False))
+
+        EventManager.Register(PossibleEvents.DEGREE_BUTTON_ISPRESSED,
+                              lambda: AcosButton.setIsInputInDegree(True))
 
     def compute(self, *args):
-
         if (len(args) == 0):
             raise InvalidInputError(
                 ErrorMessages["Functions"]["Acos"]["NoParameterGiven"])
@@ -50,10 +53,17 @@ class AcosButton(CalculatorFunctionButton):
 
         roundedValueInput = round(x, AcosButton.precisionOfComputation)
         if (abs(roundedValueInput) == 1):
-            return AcosButton.acosDomainExtremityPoints[roundedValueInput]
+            output = AcosButton.acosDomainExtremityPoints[roundedValueInput]
+            if (AcosButton.isInputInDegree):
+                output = OurMathClass.radianToDegree(output)
+            return output
 
         output = self.repetitiveTaylorAcos(
             x, AcosButton.precisionOfComputation)
+
+        if (AcosButton.isInputInDegree):
+            output = OurMathClass.radianToDegree(output)
+
         return output
 
     def taylorAcos(self, initialValue, c, x):
@@ -97,3 +107,7 @@ class AcosButton(CalculatorFunctionButton):
                 center = round(center - step, precision)
 
         return self.taylorAcos(initialValue, center, x)
+
+    @classmethod
+    def setIsInputInDegree(cls, state):
+        cls.isInputInDegree = state
