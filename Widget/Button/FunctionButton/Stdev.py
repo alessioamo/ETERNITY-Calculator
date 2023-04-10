@@ -37,7 +37,7 @@ class stdevButton(CalculatorFunctionButton):
          sd += (float(element) - mean) * (float(element) - mean)
 
     # step 4
-        sd = (sd / float(n - 1)) ** (1/2)  #TODO - replace ** with exponential function
+        sd = (sd / float(n - 1)) ** (1/2)  
 
         return sd
 
