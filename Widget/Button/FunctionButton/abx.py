@@ -11,7 +11,19 @@ class abxButton(CalculatorFunctionButton):
     def __init__(self, parentContainer, symbol):
         super().__init__(parentContainer, symbol)
 
-    def compute(self, a, b, x):
+
+# IMPLEMENT WITG *ARGS INSTEAD
+
+    def compute(self, *args):
+
+        if (len(args) != 3):
+            raise InvalidInputError(
+                ErrorMessages["Functions"]["abx_input"]["InvalidInput"]
+            )
+
+        a = args[0]
+        b = args[1]
+        x = args[2]
 
         # Verify input
         if (a == 0) or (not isinstance(a, (int, float))):
