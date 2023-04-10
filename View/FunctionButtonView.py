@@ -1,5 +1,6 @@
 import customtkinter as ctk
 from Widget.Button.FunctionButton.Acos import AcosButton
+from Widget.Button.FunctionButton.MAD import MADButton
 from Widget.Button.GeneralCalculatorButton import CalculatorButton
 from Widget.Button.MiscellaneousButton.ComputeButton import ComputeButton
 
@@ -33,3 +34,6 @@ class FunctionButtonView(ctk.CTkFrame):
         # Row 2
         acosBtn = AcosButton(parentContainer=self, symbol="acos")
         acosBtn.grid(column=1, row=2)
+
+        madBtn = MADButton(parentContainer=self, symbol="mad")
+        madBtn.grid(column=5, row=2)
