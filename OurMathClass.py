@@ -1,4 +1,5 @@
 import math
+from Widget.Button.FunctionButton.Exponent import ExponentButton
 
 # This class will try to replace the method we use
 # in our method for diverse computation [not the calculator itself]
@@ -10,6 +11,6 @@ import math
 
 
 class OurMathClass:
-    power = math.pow  # NOTE: will have to be changed with the power function of Zarren
+    power = ExponentButton.ourPower  # NOTE: will have to be changed with the power function of Zarren
     pi = math.pi
     radianToDegree = math.degrees
