@@ -1,5 +1,6 @@
 import customtkinter as ctk
 from Widget.Button.FunctionButton.Acos import AcosButton
+from Widget.Button.FunctionButton.sinh import SinhButton
 from Widget.Button.GeneralCalculatorButton import CalculatorButton
 from Widget.Button.MiscellaneousButton.ComputeButton import ComputeButton
 
