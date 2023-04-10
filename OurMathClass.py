@@ -14,3 +14,5 @@ class OurMathClass:
     power = ExponentButton.ourPower
     pi = math.pi
     radianToDegree = math.degrees
+    MyEulerConstant = math.e
+    degreeToRadian = math.radians
