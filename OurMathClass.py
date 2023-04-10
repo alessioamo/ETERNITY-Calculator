@@ -11,6 +11,6 @@ from Widget.Button.FunctionButton.Exponent import ExponentButton
 
 
 class OurMathClass:
-    power = ExponentButton.ourPower  # NOTE: will have to be changed with the power function of Zarren
+    power = ExponentButton.ourPower
     pi = math.pi
     radianToDegree = math.degrees
