@@ -4,6 +4,9 @@ from Error.ErrorMessages import ErrorMessages
 from OurMathClass import OurMathClass
 import math
 
+# Implement the change degree button
+# Do the test cases
+
 
 class AcosButton(CalculatorFunctionButton):
     # Set of points that we already know the value with certainty
@@ -18,10 +21,10 @@ class AcosButton(CalculatorFunctionButton):
         (0.8660254037844386, OurMathClass.pi/6),
     ]
 
-    acosDomainExtremityPoints = [
-        (-1, OurMathClass.pi),
-        (1, 0),
-    ]
+    acosDomainExtremityPoints = {
+        1: 0,
+        -1: OurMathClass.pi,
+    }
 
     # correspond to finding a center for the taylor app to the given input at distance<=1/10**5
     precisionOfComputation = 5
@@ -30,15 +33,27 @@ class AcosButton(CalculatorFunctionButton):
         super().__init__(parentContainer, symbol)
 
     def compute(self, *args):
+
+        if (len(args) == 0):
+            raise InvalidInputError(
+                ErrorMessages["Functions"]["Acos"]["NoParameterGiven"])
+
+        if (len(args) > 1):
+            raise InvalidInputError(
+                ErrorMessages["Functions"]["Acos"]["MoreThan1ParameterGiven"])
+
         x = args[0]
 
-        if (x == 1):
+        if (abs(x) > 1):
             raise InvalidInputError(
-                ErrorMessages["Functions"]["Acos"]["InvalidInputOf1"])
+                ErrorMessages["Functions"]["Acos"]["InputOutsideDomain"])
+
+        roundedValueInput = round(x, AcosButton.precisionOfComputation)
+        if (abs(roundedValueInput) == 1):
+            return AcosButton.acosDomainExtremityPoints[roundedValueInput]
 
         output = self.repetitiveTaylorAcos(
             x, AcosButton.precisionOfComputation)
-        print("ERROR: ", abs(math.acos(x) - output))
         return output
 
     def taylorAcos(self, initialValue, c, x):
@@ -66,7 +81,6 @@ class AcosButton(CalculatorFunctionButton):
         distance = round(abs(center-x), precision)
         counter = 0
         step = 1/(10**precision)
-        print(center, initialValue, distance, step)
         if (x >= center):
             # if x >= center it means that center must tend to x by increasing center
             while (counter < distance):
@@ -82,5 +96,4 @@ class AcosButton(CalculatorFunctionButton):
                     initialValue, center, round(center - step, precision))
                 center = round(center - step, precision)
 
-        print(center, initialValue)
         return self.taylorAcos(initialValue, center, x)
