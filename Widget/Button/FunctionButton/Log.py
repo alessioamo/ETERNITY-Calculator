@@ -1,7 +1,7 @@
 from Widget.Button.GeneralCalculatorButton import CalculatorFunctionButton
 from Error.InvalidInputError import InvalidInputError
 from Error.ErrorMessages import ErrorMessages
-import math
+from OurMathClass import OurMathClass
 
 
 class LogButton(CalculatorFunctionButton):
@@ -17,7 +17,8 @@ class LogButton(CalculatorFunctionButton):
             raise InvalidInputError(
                 ErrorMessages["Functions"]["Log"]["InvalidInputOfNotPositive"])
         output = self.logarithm(x, base)
-        print("ERROR: ", abs(math.log(x, base) - output))
+
+        #10 decimal places
         return round(output, 10)
         
     def logarithm(self, x, base):    
@@ -30,9 +31,9 @@ class LogButton(CalculatorFunctionButton):
         result = 0.0
 
         # Perform binary search
-        while abs(x - (base ** result)) > epsilon:
+        while abs(x - OurMathClass.power(base, result)) > epsilon:
             mid = (lower_bound + upper_bound) / 2
-            mid_result = base ** mid
+            mid_result = OurMathClass.power(base, mid)
             if mid_result < x:
                 lower_bound = mid
             else:
