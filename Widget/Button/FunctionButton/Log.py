@@ -13,15 +13,16 @@ class LogButton(CalculatorFunctionButton):
         if (len(args) == 0):
             raise InvalidInputError(
                 ErrorMessages["Functions"]["Log"]["NoParameterGiven"])
-        if (x <= 0 or base <= 0):
-            raise InvalidInputError(
-                ErrorMessages["Functions"]["Log"]["InvalidInputOfNotPositive"])
         if (len(args) > 2):
             raise InvalidInputError(
                 ErrorMessages["Functions"]["Log"]["InvalidNumberOfParameters"])
         
         x = args[0]
         base = 10
+        if (x <= 0 or base <= 0):
+            raise InvalidInputError(
+                ErrorMessages["Functions"]["Log"]["InvalidInputOfNotPositive"])
+        
         if (len(args) == 2):
             base = args[1]
         output = self.logarithm(x, base)
