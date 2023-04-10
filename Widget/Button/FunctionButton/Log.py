@@ -26,18 +26,18 @@ class LogButton(CalculatorFunctionButton):
         epsilon = 1e-10
 
         # Initialize variables for binary search
-        lower_bound = 0
-        upper_bound = x
+        lowerBound = 0
+        upperBound = x
         result = 0.0
 
         # Perform binary search
         while abs(x - OurMathClass.power(base, result)) > epsilon:
-            mid = (lower_bound + upper_bound) / 2
+            mid = (lowerBound + upperBound) / 2
             mid_result = OurMathClass.power(base, mid)
             if mid_result < x:
-                lower_bound = mid
+                lowerBound = mid
             else:
-                upper_bound = mid
+                upperBound = mid
             result = mid
 
         return result
