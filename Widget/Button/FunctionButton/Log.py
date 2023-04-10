@@ -9,22 +9,21 @@ class LogButton(CalculatorFunctionButton):
         super().__init__(parentContainer, symbol)
 
     def compute(self, *args):
-        x = args[0]
-        base = 10
-        if len(args) == 2:
-            base = args[1]
-        
         # Error checking
+        if (len(args) == 0):
+            raise InvalidInputError(
+                ErrorMessages["Functions"]["Log"]["NoParameterGiven"])
         if (x <= 0 or base <= 0):
             raise InvalidInputError(
                 ErrorMessages["Functions"]["Log"]["InvalidInputOfNotPositive"])
-        if len(args) == 0:
-            raise InvalidInputError(
-                ErrorMessages["Functions"]["Log"]["NoParameterGiven"])
-        if len(args) > 2:
+        if (len(args) > 2):
             raise InvalidInputError(
                 ErrorMessages["Functions"]["Log"]["InvalidNumberOfParameters"])
         
+        x = args[0]
+        base = 10
+        if (len(args) == 2):
+            base = args[1]
         output = self.logarithm(x, base)
 
         #10 decimal places
