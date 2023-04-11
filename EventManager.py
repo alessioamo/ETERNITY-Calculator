@@ -7,6 +7,8 @@ class PossibleEvents(Enum):
     FUNCTION_BUTTON_ISCREATED = auto()
     EQUATION_ENTRY_ISUPDATED = auto()
     COMPUTE_BUTTON_ISPRESSED = auto()
+    DEGREE_BUTTON_ISPRESSED = auto()
+    RADIAN_BUTTON_ISPRESSED = auto()
 
 
 class EventManager:
