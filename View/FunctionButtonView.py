@@ -3,8 +3,13 @@ from Widget.Button.FunctionButton.Stdev import stdevButton      #yaser
 from Widget.Button.FunctionButton.LeftButton import LeftButton      #yaser
 from Widget.Button.FunctionButton.RightButton import RightButton      #yaser
 from Widget.Button.FunctionButton.Acos import AcosButton
+from Widget.Button.FunctionButton.abx import abxButton
+from Widget.Button.FunctionButton.Exponent import ExponentButton
+from Widget.Button.FunctionButton.sinh import SinhButton
+from Widget.Button.FunctionButton.MAD import MADButton
 from Widget.Button.GeneralCalculatorButton import CalculatorButton
 from Widget.Button.MiscellaneousButton.ComputeButton import ComputeButton
+from Widget.Button.MiscellaneousButton.ClearButton import ClearButton
 
 
 class FunctionButtonView(ctk.CTkFrame):
@@ -25,8 +30,8 @@ class FunctionButtonView(ctk.CTkFrame):
             parentContainer=self, symbol='->')  # Yaser
         btnDel = CalculatorButton(
             parentContainer=self, symbol='DEL')  # To implement
-        btnClear = ComputeButton(parentContainer=self,
-                                 symbol='CLR')  # To implement
+        btnClear = ClearButton(parentContainer=self,
+                               symbol='CLR')  # To implement
 
         leftArr.grid(column=1, row=1)
         rightArr.grid(column=2, row=1)
@@ -35,9 +40,23 @@ class FunctionButtonView(ctk.CTkFrame):
 
         # Row 2
         acosBtn = AcosButton(parentContainer=self, symbol="acos")
+        exponentBtn = ExponentButton(parentContainer=self, symbol="exp")
         acosBtn.grid(column=1, row=2)
         stdevBtn = stdevButton(parentContainer=self, symbol="stDev")    #yaser
-        stdevBtn.grid(column=2, row=4)                                  #yaser
+        stdevBtn.grid(column=2, row=3)                                  #yaser
         btnComma = CalculatorButton(parentContainer=self, symbol=',')   #yaser
-        btnComma.grid(column=3, row=2)                                  #yaser
+        btnComma.grid(column=5, row=5)                                  #yaser
+
+
+       
+        abxBtn = abxButton(parentContainer=self, symbol="abx")
+        abxBtn.grid(column=2, row=2)
+
+        exponentBtn.grid(column=4, row=2)
+
+        sinhBtn = SinhButton(parentContainer=self, symbol="sinh")
+        sinhBtn.grid(column=1, row=3)
+
+        madBtn = MADButton(parentContainer=self, symbol="mad")
+        madBtn.grid(column=5, row=2)
 

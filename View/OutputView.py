@@ -48,6 +48,9 @@ class ResultEntry(ctk.CTkEntry):
             self.result.set(result)
         except InvalidInputError as e:
             self.handleException(e)
+        except SyntaxError as e:
+            self.handleException(
+                'Invalid characters or unclosed parentheses were used!')
         except Exception as e:
             self.handleException('Something went wrong. Verify your input!')
 
@@ -64,6 +67,9 @@ class OutputView(ctk.CTkFrame):
         self.font = ("Roboto", 20)
         self.currentInput = tk.StringVar()
 
+        EventManager.Register(
+            PossibleEvents.CLEAR_BUTTON_ISPRESSED, self.clearInput)
+
         self.equationEntry = EquationEntry(
             parentContainer=self, width=OutputView.width, height=OutputView.height/2, textVariable=self.currentInput, font=self.font)
         self.equationEntry.pack()
@@ -71,3 +77,6 @@ class OutputView(ctk.CTkFrame):
         self.resultEntry = ResultEntry(
             parentContainer=self, width=OutputView.width, height=OutputView.height/2, textVariable=self.currentInput, font=self.font)
         self.resultEntry.pack()
+
+    def clearInput(self):
+        self.equationEntry.delete(0, 'end')
