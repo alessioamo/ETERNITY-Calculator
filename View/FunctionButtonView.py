@@ -1,4 +1,7 @@
 import customtkinter as ctk
+from Widget.Button.FunctionButton.Stdev import stdevButton      #yaser
+from Widget.Button.FunctionButton.LeftButton import LeftButton      #yaser
+from Widget.Button.FunctionButton.RightButton import RightButton      #yaser
 from Widget.Button.FunctionButton.Acos import AcosButton
 from Widget.Button.FunctionButton.Log import LogButton
 from Widget.Button.FunctionButton.abx import abxButton
@@ -22,10 +25,10 @@ class FunctionButtonView(ctk.CTkFrame):
                           pad=self.paddingBetweenGridCells)
 
         # Row 1
-        leftArr = CalculatorButton(
-            parentContainer=self, symbol='<-')  # To implement
-        rightArr = CalculatorButton(
-            parentContainer=self, symbol='->')  # To implement
+        leftArr = LeftButton(
+            parentContainer=self, symbol='<-')  # Yaser
+        rightArr = RightButton(
+            parentContainer=self, symbol='->')  # Yaser
         btnDel = CalculatorButton(
             parentContainer=self, symbol='DEL')  # To implement
         btnClear = ClearButton(parentContainer=self,
@@ -40,6 +43,10 @@ class FunctionButtonView(ctk.CTkFrame):
         acosBtn = AcosButton(parentContainer=self, symbol="acos")
         exponentBtn = ExponentButton(parentContainer=self, symbol="exp")
         acosBtn.grid(column=1, row=2)
+        stdevBtn = stdevButton(parentContainer=self, symbol="stDev")    #yaser
+        stdevBtn.grid(column=2, row=3)                                  #yaser
+        btnComma = CalculatorButton(parentContainer=self, symbol=',')   #yaser
+        btnComma.grid(column=5, row=5)                                  #yaser
 
         logBtn = LogButton(parentContainer=self, symbol="log")
         logBtn.grid(column=3, row=2)

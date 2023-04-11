@@ -13,6 +13,11 @@ ErrorMessages = {
             "InvalidInputOfNotPositive": "x and base must be positive numbers",
             "NoParameterGiven": "Log must take at least 1 parameter",
             "InvalidNumberOfParameters": "Log can only take 1 or 2 parameters",
+        },
+        "Stdev": {
+            "InvalidInputSmallList" : "Stdev requires input of more than 1 #"
+            
+        },
         "abx_a": {
             "InvalidInputOf0": "a cannot be equal to 0"
         },
