@@ -3,6 +3,7 @@ from Widget.Button.FunctionButton.Stdev import stdevButton      #yaser
 from Widget.Button.FunctionButton.LeftButton import LeftButton      #yaser
 from Widget.Button.FunctionButton.RightButton import RightButton      #yaser
 from Widget.Button.FunctionButton.Acos import AcosButton
+from Widget.Button.FunctionButton.Log import LogButton
 from Widget.Button.FunctionButton.abx import abxButton
 from Widget.Button.FunctionButton.Exponent import ExponentButton
 from Widget.Button.FunctionButton.sinh import SinhButton
@@ -47,7 +48,8 @@ class FunctionButtonView(ctk.CTkFrame):
         btnComma = CalculatorButton(parentContainer=self, symbol=',')   #yaser
         btnComma.grid(column=5, row=5)                                  #yaser
 
-
+        logBtn = LogButton(parentContainer=self, symbol="log")
+        logBtn.grid(column=3, row=2)
        
         abxBtn = abxButton(parentContainer=self, symbol="abx")
         abxBtn.grid(column=2, row=2)
@@ -59,4 +61,3 @@ class FunctionButtonView(ctk.CTkFrame):
 
         madBtn = MADButton(parentContainer=self, symbol="mad")
         madBtn.grid(column=5, row=2)
-

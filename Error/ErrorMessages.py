@@ -9,7 +9,11 @@ ErrorMessages = {
             "NoParameterGiven": "Acos must take 1 parameter",
             "MoreThan1ParameterGiven": "Acos can only take 1 parameter",
         },
-        
+        "Log": {
+            "InvalidInputOfNotPositive": "x and base must be positive numbers",
+            "NoParameterGiven": "Log must take at least 1 parameter",
+            "InvalidNumberOfParameters": "Log can only take 1 or 2 parameters",
+        },
         "Stdev": {
             "InvalidInputSmallList" : "Stdev requires input of more than 1 #"
             
