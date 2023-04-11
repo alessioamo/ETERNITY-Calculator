@@ -9,6 +9,11 @@ ErrorMessages = {
             "NoParameterGiven": "Acos must take 1 parameter",
             "MoreThan1ParameterGiven": "Acos can only take 1 parameter",
         },
+        
+        "Stdev": {
+            "InvalidInputSmallList" : "Stdev requires input of more than 1 #"
+            
+        },
         "abx_a": {
             "InvalidInputOf0": "a cannot be equal to 0"
         },
