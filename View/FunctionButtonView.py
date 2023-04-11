@@ -1,5 +1,6 @@
 import customtkinter as ctk
 from Widget.Button.FunctionButton.Acos import AcosButton
+from Widget.Button.FunctionButton.abx import abxButton
 from Widget.Button.FunctionButton.Exponent import ExponentButton
 from Widget.Button.FunctionButton.sinh import SinhButton
 from Widget.Button.FunctionButton.MAD import MADButton
@@ -38,6 +39,12 @@ class FunctionButtonView(ctk.CTkFrame):
         acosBtn = AcosButton(parentContainer=self, symbol="acos")
         exponentBtn = ExponentButton(parentContainer=self, symbol="exp")
         acosBtn.grid(column=1, row=2)
+
+
+       
+        abxBtn = abxButton(parentContainer=self, symbol="abx")
+        abxBtn.grid(column=2, row=2)
+
         exponentBtn.grid(column=4, row=2)
 
         sinhBtn = SinhButton(parentContainer=self, symbol="sinh")
@@ -45,3 +52,4 @@ class FunctionButtonView(ctk.CTkFrame):
 
         madBtn = MADButton(parentContainer=self, symbol="mad")
         madBtn.grid(column=5, row=2)
+
