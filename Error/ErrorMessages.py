@@ -21,7 +21,6 @@ ErrorMessages = {
         "abx_bx": {
             "InvalidPower0": "0 to the power of 0 is undefined"
         }
-
     }
 
 
